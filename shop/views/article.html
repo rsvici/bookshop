@@ -1,0 +1,109 @@
+<ion-header-bar  class="item-input-inset stable-bg">			
+	<div class="button-bar articletitle">
+		<i class="icon ion-chevron-left placeholder-icon shopCarRen" onclick="javascript:window.history.back(-1);" style="padding-left:8px;padding-top:8px;"></i>
+		<a class="button button-clear button-dark" ng-click=getArticleShow(1)>基本信息</a>
+		<span>|</span>
+		<a class="button button-clear button-dark" ng-click=getArticleShow(2)>商品详情</a>
+		<span>|</span>
+		<a class="button button-clear button-dark" ng-click=getArticleShow(3)>评价</a>
+	</div>
+</ion-header-bar>
+<!-- 内容	 -->
+<ion-content  overflow-scroll="false" has-bouncing='true'  class="has-footer stable-bg has-header padding-top" scroll="false">
+	
+	<!-- 基本信息 -->
+	<div ng-if="ArticleShow(1)">
+		<div class="list card " style="margin-top:5px;">
+		  <div class="item item-body articlefirst " style="padding-top:0px">
+		    <img class="full-image" ng-src="/Admin/{{articleAll.images[0].image_name}}">
+		   	<h3 class="title">书名  :  {{articleAll.title}}</h3>
+			<p class="articlefirstmiaoshu miaoshu">作者  :  <span>{{articleAll.author}}</span></p>
+			<div class="row clearpadding">
+				<div class="col-50">
+					<p style="font-family:微软雅黑">价格  : &nbsp;<span class="articlefirstprice">{{articleAll.price | currency:'&yen;'}}</span></p>
+				</div>
+				
+				<div class="col-50">
+					<button class="button  button-small shopCarLogin icon ion-minus-round " ng-click="minusNumber()"></button>
+					 <input type="tel" ng-model="number" class="shopCarInput stable-bg"  style="display:inline-block;text-align:center;height:28px;padding: 0px;">
+					<button class="button button button-small shopCarLogin icon ion-plus-round" ng-click='addNumber()'></button>
+				</div>	
+			</div>
+			<p class="articlefirstmiaoshu" style="font-family:微软雅黑">上架时间  :  {{articleAll.pudate * 1000 | date : "yyyy-MM-dd H:mm:ss"}}</p>
+		  </div>
+		</div>
+
+	</div>
+
+
+	<!-- 商品详情 -->
+	<div ng-if="ArticleShow(2)">
+		<ion-content scroll="true"  has-bouncing='false'>
+				<div class="list card" style="margin-top:15px;">
+				  <div class="item item-body articlefirst">
+				  	<h3 class="title">{{articleAll.title}}</h3>
+				   	<p class="articlefirstprice" style="font-family:微软雅黑">{{articleAll.price | currency:'&yen;'}}</p>
+				   	<p class="articlefirstmiaoshu" style="font-family:微软雅黑">上架时间  :  {{articleAll.pudate * 1000 | date : "yyyy-MM-dd H:mm:ss"}}</p>
+				  	 <img class="full-image" ng-src="/Admin/{{articleAll.images[0].image_name}}">
+				  	<p class="articlefirstmiaoshu" style="font-family:微软雅黑" ng-bind-html="articleAll.desc"></p>
+			
+				    <img class="full-image" ng-src="/Admin/{{articleAll.images[0].image_name}}">
+				   	
+					<p class="articlefirstmiaoshu" style="font-family:微软雅黑">{{articleAll.author}}</p>
+				  	<p class="articlefirstmiaoshu" style="font-family:微软雅黑" ng-bind-html="articleAll.desc"></p>
+			
+				
+				
+					
+				  </div>
+				
+			</div>
+			
+		</ion-content>
+	</div>
+
+	<!-- 评价 -->
+	<div ng-if="ArticleShow(3)">
+		<div class="list card" style="margin-top:5px;">
+			 <div class="item item-divider">
+			    添加评论
+			  </div>
+			  <form class="resetfrom" name="plForm" ng-submit='tijiaopinglun()'>
+			  		<!-- <div class="item item-text-wrap">
+			  		<input type="text" ng-model="userdata.name" placeholder="请输入姓名" ng-required='true'>
+			  		</div> -->
+				  <div class="item item-text-wrap">
+				   	<textarea  ng-model="userdata.content" cols="30" rows="8" placeholder="请输入评论" ng-required='true'></textarea>
+				  </div>
+				   <div class="item item-divider">
+				    <button class="button button-block button-positive">提交</button>
+				  </div>
+			  </form>
+		</div>
+	</div>
+</ion-content>
+<div class="bar bar-footer light-bg clearpadding" style="overflow:hidden">
+	<div class="row clearpadding">
+		<div class="col">
+			<div class="articleTabsYx" ui-sref="home">
+				<i class="icon ion-ios-home-outline"></i>
+				<p style="margin:0;font-family:微软雅黑">首页</p>
+			</div>
+			<div class="articleTabsYx">
+				<i class="icon ion-ios-star-outline"></i>
+				<p style="margin:0;font-family:微软雅黑">收藏</p>
+			</div>
+			<div class="articleTabsYx" ui-sref="shopcar">
+				<i class="icon ion-ios-cart-outline"></i>
+				<p style="margin:0;font-family:微软雅黑">购物车</p>
+			</div>
+		</div>
+		
+		<div class="col-30 clearpadding">
+			<button class="button button-positive button-full" style="margin:0;height:44px;" ng-click="addShopcar()">加入购物车</button>
+		</div>
+		<div class="col-25 clearpadding">
+			<button class="button button-assertive button-full" style="margin:0;height:44px;" ng-click="dingdanList()">立即购买</button>
+		</div>
+	</div>
+</div>

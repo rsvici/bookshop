@@ -1,0 +1,91 @@
+<ion-header-bar  class="item-input-inset stable-bg">			
+	<i class="icon ion-chevron-left placeholder-icon shopCarRen" ng-click=gotoHome()></i>
+	<h3 class="title">购 物 车</h3>
+	 
+</ion-header-bar>
+<!-- 内容	 -->
+<ion-content  overflow-scroll="false" has-bouncing='true'  class="has-footer stable-bg has-header" scroll="true">
+	<!-- <div ng-if="getShopCarShow(1)">
+		<div class="row padding light-bg">
+			<div class="col-10"><i class="icon ion-android-cart shopCarIcon"></i></div>
+			<div class="col-66 shopCardes">登录后可同步电脑与手机购物车</div>
+			<div class="col padding-top">
+				<button class="button button-assertive  button-block button-small shopCarLogin" ng-click=openLoginModal()>登录</button>
+			</div>
+		</div>	
+	
+		<div class="list padding" >
+			<div class="title_con">
+				<span class="title">本周热卖</span>
+				<div class="line"></div>
+			</div>
+			<ion-item class="row padding-horizontal row-wrap clearborder stable-bg">
+				<ion-list class="col col-50" ng-repeat="book in bookList">
+						<ion-item class="item-image padding-top" style="border:none">
+							<img ng-src="/Admin/{{book.images[0].image_name}}" width="100%">
+						</ion-item>
+						<ion-item style="border:none;padding-bottom:0">
+							<h3>{{book.title}}</h3>
+							<p class="miaoshu">{{book.author}}</p>
+							<p class="price">{{book.price | currency:'&yen;'}}</p>
+						</ion-item>
+				</ion-list>
+			</ion-item>
+		</div>
+	</div> -->
+	<div ng-if="getShopCarShow(2)">
+		<div class="row padding-horizontal light-bg">
+			<div class="col-10 col-offset-10"><i class="icon ion-thumbsup shopCarIcon2" style="color:#7CDFC6;font-size:20px ;"></i></div>
+			<div class="col-80 shopCardes2" style="font-family:微软雅黑">您正在安全购物环境中，请放心购物</div>
+		</div>	
+	
+
+		<div class="card list light-bg ">
+			<div class="row item" ng-repeat="(key,book) in bookList">
+				<div class="col-10" >
+					<ion-list class="shopCarFuxuan">
+						<ion-checkbox ng-model="shopCarPay" ></ion-checkbox>
+					</ion-list>
+				</div>
+				<div class="col-90 item item-thumbnail-left clearborder" style="padding-left:100px;padding-right:10px">
+					<img ng-src="/Admin/{{book.images[0].image_name}}" width="100%">
+		      		<h3 class="title">{{book.title}}</h3>
+					<p class="miaoshu">{{book.author}}</p>
+					<div class="row clearpadding">
+						<div class="col-33">
+							<p class="price">{{book.price | currency:'&yen;'}}</p>
+						</div>
+						<div class="col-66">
+
+
+							<button class="button  button-small shopCarLogin icon ion-minus-round " ng-click="minusNumber(book)"></button>
+							 <input type="tel" ng-model="book.number" class="shopCarInput stable-bg"  style="display:inline-block;text-align:center;height:28px;padding: 0px;">
+							
+							
+							<button class="button button button-small shopCarLogin icon ion-plus-round" ng-click='addNumber(book)'></button>
+							
+							
+						</div>
+					</div>
+					<button class="button  button-assertive button-small icon ion-close-round shopCarLogin" ng-click="deleteShopcar(key)"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</ion-content>
+<div class="bar bar-footer light-bg clearpadding">
+	<div class="row clearpadding">
+		<div class="col-25">
+			<ion-list class="jiesuan">
+				<ion-checkbox ng-model="shopCarPay"></ion-checkbox>
+			</ion-list>
+		</div>
+		<div class="col-50 shopcarHeji">
+			合计: {{totalPrice | currency : "&yen;"}}
+		</div>
+		<div class="col-25 clearpadding">
+			<button class="button button-assertive button-full" style="margin:0;height:44px;font-family:微软雅黑" ng-click="dingdanList()">去 结 算</button>
+		</div>
+	</div>
+</div>

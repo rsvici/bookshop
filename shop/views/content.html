@@ -1,0 +1,24 @@
+<ion-header-bar  class="item-input-inset stable-bg">			
+	<i class="icon ion-chevron-left placeholder-icon shopCarRen" onclick="javascript:window.history.back(-1);"></i>
+	<h3 class="title">查看评论</h3>
+	  
+</ion-header-bar>
+<!-- 内容	 -->
+<ion-content  overflow-scroll="false" has-bouncing='true'  class="has-tab stable-bg has-header" scroll="true">
+	<div class="list">
+		<div  ng-repeat="booklist in showOrder">
+			<div class="item item-divider">
+		    	编号:{{booklist.comment_id}}
+			</div>
+
+			<a class="item ">
+				
+	  			<h2>书编号:{{booklist.book_id}}</h2>	
+	  			<p>评论内容:{{booklist.comment_content}}</p>
+	  			<p>评论时间:<span class="addtime">{{booklist.comment_addtime}}</span></p>
+			</a>
+		</div>
+		
+	</div>
+
+</ion-content>

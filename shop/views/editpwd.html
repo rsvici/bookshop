@@ -1,0 +1,53 @@
+<div class="modal stable-bg " >
+	<ion-header-bar class="stable-bg">
+		<button class="button"  onclick="javascript:window.history.back(-1)">
+			<i class="icon ion-arrow-left-c"></i>
+		</button>
+		<h1 class="title">修改密码</h1>
+	</ion-header-bar>
+
+	 
+	<ion-content padding='true'>
+		<!-- 表单验证 -->
+		<form class="resetfrom" name="myForm" ng-submit='editpwdFn()'>
+			<div class="list list-wrap padding-horizontal biaodan" >
+			<div class="row clearpadding">
+				<label class="item item-input">
+					<input type="text" placeholder="请输入用户名" class="form-control" 
+	                   ng-model="userdata.username" 
+	                   ng-readonly='true'>
+				</label>
+			</div>
+	
+
+			<div class="row clearpadding">
+				<label class="item item-input col-60">
+					<input type="password" class="form-control" ng-model="userdata.pwd" name="pwdEle" id="pwdInput" autocomplete="off"  ng-required='true' placeholder="输入密码"
+					ng-minlength='6' ng-maxlength='18'>
+				</label>
+				<label>	
+					<p class="text-success" ng-if="myForm.pwdEle.$touched && myForm.pwdEle.$valid">密码有效</p>
+					<p class="text-danger"  ng-if="myForm.pwdEle.$touched &&( myForm.pwdEle.$error.minlength || myForm.pwdEle.$error.maxlength )">密码错误</p>
+				</label>
+			</div>
+
+			<div class="row clearpadding">
+				<label class="item item-input col-60">
+					<input type="password" class="form-control" ng-model="userdata.repwd" name="repwdEle" id="repwdInput" placeholder="确认密码">
+				</label>
+				<label>
+					<p class="text-success" ng-if="myForm.repwdEle.$touched && checkPwd()">密码一致</p>
+					<p class="text-danger"  ng-if="myForm.repwdEle.$touched && !checkPwd()">密码不一致</p>
+				</label>
+			</div>
+
+			<div class="row row-wrap biaodan" style="margin-top:25px">
+				<button class="button button-positive button-light col col-80 col-offset-10 button-small" ng-disabled="myForm.$invalid" style="font-size:15px;font-family:微软雅黑">修 改</button>
+			
+		</form>	
+			
+	</ion-content>
+</div>
+
+
+

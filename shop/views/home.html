@@ -1,0 +1,149 @@
+<ion-header-bar  class="item-input-inset">			
+	<i class="icon ion-paper-airplane placeholder-icon logo"></i>
+	<label class="item-input-wrapper padding-left" style="margin-left:10px">
+		<i class="icon ion-ios-search placeholder-icon"></i>
+		<input type="search" placeholder="搜索..." ng-click=gotoList()>
+	</label>  
+	<button class="button  button-clear button-stable login " menu-toggle="right" ui-sref="login" ng-if='panduanlogin' style="font-size:14px;color:#7C7C7C;">登录</button>
+	<button class="button button-clear button-calm " menu-toggle="right" style="font-size:14px;color:#7C7C7C;" ui-sref="person" ng-if='!panduanlogin'>我</button>
+</ion-header-bar>
+
+
+<!-- 内容	 -->
+<ion-content  overflow-scroll="false" has-bouncing='true'  class="has-tabs stable-bg has-header" >
+	
+	<!-- 下拉刷新 -->
+	<ion-refresher pulling-text="刷新..." refreshing-text="" on-refresh="refreshData()">
+	</ion-refresher>
+	
+	<!-- 轮播图 -->
+	<ion-slide-box does-continue="true" slide-interval="3000" auto-play="true">
+
+	  <ion-slide>
+	    	<a href="#">
+	    		<img src="./images/5.jpg" alt="" width="100%">
+	    	</a>
+	  </ion-slide>
+	  <ion-slide>
+	   		<a href="#">
+	    		<img src="./images/6.jpg" alt="" width="100%">
+	    	</a>
+	  </ion-slide>
+	  <ion-slide on-slide-changed="slideHasChanged(index)">
+	   		<a href="#">
+	    		<img src="./images/7.jpg" alt="" width="100%">
+	    	</a>
+	  </ion-slide>
+	  <ion-slide>
+	    	<a href="#">
+	    		<img src="./images/8.jpg" alt="" width="100%" >
+	    	</a>
+	  </ion-slide>
+
+	</ion-slide-box>
+	
+	<!-- 分类按钮 -->
+	
+	<div class="row light-bg" style="padding-top:0;padding-bottom:0">
+		<div class="col">
+		 	<img src="./images/1xiaoshuo.jpg" width="100%">
+		</div>
+		<div class="col">
+		 	<img src="./images/1wenxue.jpg" width="100%">
+		</div>
+		<div class="col">
+		 	<img src="./images/1jingji.jpg" width="100%">
+		</div>
+		<div class="col">
+		 	<img src="./images/1guanli.jpg" width="100%">
+		</div>
+		<div class="col">
+		 	<img src="./images/1lizhi.jpg" width="100%">
+		</div>
+	</div>
+	<div class="row light-bg" style="padding-top:0;padding-bottom:0">
+		<div class="col">
+		 	<img src="./images/1lishi.jpg" width="100%">
+		</div>
+		<div class="col">
+		 	<img src="./images/1xinli.jpg" width="100%">
+		</div>
+		<div class="col">
+		 	<img src="./images/1yangsheng.jpg" width="100%">
+		</div>
+		<div class="col">
+		 	<img src="./images/1qinzi.jpg" width="100%">
+		</div>
+		<div class="col">
+		 	<img src="./images/1yingyu.jpg" width="100%">
+		</div>
+	</div>
+
+
+
+	<!-- 本周热卖 -->
+	
+	<div class="list padding-top" ng-repeat="books in bookListAll" style="margin-bottom:0">
+		<div class="row clearpadding">
+			<div class="col clearpadding">
+			 	<img ng-src="./images/{{books.nav}}" width="100%">
+			</div>
+		</div>		
+		<div class="col-100">
+				<img ng-src="./images/{{books.photo}}" width="100%">
+		</div>
+		
+		<div class="row row-wrap" style="padding-bottom:0">
+			<ion-list class="col col-33" ng-repeat="book in books.obj" style="padding-left:0;padding-right:0">
+				<a ng-click=articleId(book.id)>
+					<ion-item class="item-image padding-top" style="border:none">
+						<img ng-src="/Admin/{{book.images[0].image_name}}" width="100%">
+					</ion-item>
+					<ion-item style="border:none;padding-bottom:0">
+						<h3 class="title">{{book.title}}</h3>
+						<p class="miaoshu">{{book.author}}</p>
+						<p class="price">{{book.price | currency:'&yen;'}}</p>
+					</ion-item>
+				</a>
+			</ion-list>
+		</div>
+	</div>
+
+	<!-- 猜你喜欢 -->
+	<div class="list padding"  style="padding-bottom:0">
+		<div class="title_con">
+			<span class="title">猜你喜欢</span>
+			<div class="line"></div>
+		</div>
+		<ion-item class="row padding-horizontal row-wrap clearborder stable-bg">
+			<ion-list class="col col-50" ng-repeat="book in newLoadMore">
+					<a ng-click=articleId(book.id)><ion-item class="item-image padding-top" style="border:none">
+							<img ng-src="/Admin/{{book.images[0].image_name}}" width="100%">
+						</ion-item>
+						<ion-item style="border:none;padding-bottom:0">
+							<h3 class="title">{{book.title}}</h3>
+							<p class="miaoshu">{{book.author}}</p>
+							<p class="price">{{book.price | currency:'&yen;'}}</p>
+						</ion-item></a>
+			</ion-list>
+		</ion-item>
+
+	</div>
+
+	
+	<!-- 上拉加载 -->
+	<!-- <ion-infinite-scroll on-infinite="loadMore()">
+	</ion-infinite-scroll>
+	 -->
+	 <ion-infinite-scroll ng-if="noMorePage" immediate-check="false" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>
+	
+	<div class="list" ng-if="!noMorePage">
+		<h4 style="text-align:center">没有更多了</h6>
+	</div>
+</ion-content>
+<ion-tabs class="tabs-icon-top tabs-light">
+	<ion-tab title="首页" icon="ion-home" ui-sref="home"></ion-tab>
+	<ion-tab title="分类" icon="ion-ios-paper" ui-sref="list"></ion-tab>
+	<ion-tab title="购物车" icon="ion-ios-cart" ui-sref="shopcar" badge="totalNumber" badge-style="badge-assertive"></ion-tab>
+	<ion-tab title="我" icon="ion-person" ui-sref="person"></ion-tab>
+</ion-tabs>

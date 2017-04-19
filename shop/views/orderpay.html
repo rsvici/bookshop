@@ -1,0 +1,63 @@
+<ion-header-bar  class="item-input-inset stable-bg">			
+	<i class="icon ion-chevron-left placeholder-icon shopCarRen" onclick="javascript:window.history.back(-1);"></i>
+	<h3 class="title">确定订单</h3>
+	 
+</ion-header-bar>
+<!-- 内容	 -->
+<ion-content  overflow-scroll="false" has-bouncing='true'  class="has-footer stable-bg has-header" scroll="true">
+	<div>
+		<div class="row padding-horizontal light-bg">
+			<div class="col-10 col-offset-10"><i class="icon ion-thumbsup shopCarIcon2" style="color:#7CDFC6;font-size:20px ;"></i></div>
+			<div class="col-80 shopCardes2" style="font-family:微软雅黑">您正在安全购物环境中，请放心购物</div>
+		</div>	
+
+		
+
+		<div class="card list light-bg " style="margin-bottom:0px;">
+			<div class=" item" ng-repeat="(key,book) in bookList">
+			
+				<div class="item item-thumbnail-left clearborder" style="padding-left:100px;padding-right:10px">
+					<img ng-src="/Admin/{{book.images[0].image_name}}" width="100%">
+		      		<h3 class="title">{{book.title}}</h3>
+					<p class="miaoshu">{{book.author}}</p>
+					
+						
+							<p class="price">{{book.price | currency:'&yen;'}}</p>
+						
+						
+							<button class="button  button-small shopCarLogin icon ion-minus-round " ng-click="minusNumber(book)"></button>
+							 <input type="tel" ng-model="book.number" class="shopCarInput stable-bg"  style="display:inline-block;text-align:center;height:28px;padding: 0px;">
+							
+							
+							<button class="button button button-small shopCarLogin icon ion-plus-round" ng-click='addNumber(book)'></button>
+						
+					</div>
+	
+				</div>
+			</div>
+		</div>
+		<div class="list card" style="margin-top:10px;">
+			<div class="row item">
+				<div class="ion ion-ios-location col col-10" style="font-size:x-large;margin-left:15px;margin-top:15px;font-family:微软雅黑"></div>
+				<div class="col col-80">
+				<span class="shdz">姓名: 水淼</span><span class="dh">18762038298</span>
+		 		<p class="shdz">收货地址: 上海市宝山区杨行镇</p>
+		 		<p class="shbb">(收货不便时，可选择免费代收服务)</p>
+		 		</div>
+		 		</div>
+		</div>
+	</div>
+
+</ion-content>
+<div class="bar bar-footer light-bg clearpadding">
+	<div class="row clearpadding">
+		<div class="col-25">
+		</div>
+		<div class="col-50 shopcarHeji">
+			合计: {{totalPrice | currency : "&yen;"}}
+		</div>
+		<div class="col-25 clearpadding">
+			<button class="button button-positive button-full" style="margin:0;height:44px;font-family:微软雅黑" ng-click="paysuccess()">确定付款</button>
+		</div>
+	</div>
+</div>

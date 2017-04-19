@@ -1,0 +1,31 @@
+<ion-header-bar  class="item-input-inset stable-bg">			
+	<i class="icon ion-chevron-left placeholder-icon shopCarRen" onclick="javascript:window.history.back(-1);"></i>
+	<h3 class="title">查看订单</h3>
+	  
+</ion-header-bar>
+<!-- 内容	 -->
+<ion-content  overflow-scroll="false" has-bouncing='true'  class="has-tab stable-bg has-header" scroll="true">
+	<ion-refresher pulling-text="刷新..." refreshing-text="" on-refresh="refreshData()">
+	</ion-refresher>
+	<div class="list">
+		<div  ng-repeat="booklist in showOrder">
+			<div class="item item-divider" style="font-family:微软雅黑">
+		    	编号: {{booklist[0].order_id}}
+			</div>
+
+			<a class="item item-thumbnail-left" ng-repeat="item in booklist">
+				<img ng-src="/Admin/{{item.book_image}}">
+	  			<h2 class="title">书名: {{item.book_title}}</h2>
+	  			<p style="font-family:微软雅黑">价格: <span class="price">{{item.book_price | currency:"&yen;"}}</span></p>
+	  			<p style="font-family:微软雅黑">购买数量: <span class="num">{{item.book_num}}</span> 本</p>
+	  			<p style="font-family:微软雅黑">购买时间: <span class="addtime">{{item.order_addtime}}</span></p>
+			</a>
+		</div>
+	</div>
+
+	<ion-infinite-scroll ng-if="noMorePage" immediate-check="false" on-infinite="loadMore()" distance="1%" ></ion-infinite-scroll>
+	
+	<div class="list" ng-if="!noMorePage">
+		<h4 style="text-align:center">没有更多了</h6>
+	</div>
+</ion-content>

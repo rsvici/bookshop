@@ -1,0 +1,200 @@
+.clearpadding{
+	padding: 0;
+}
+.clearborder{
+	border:none;
+}
+.logo{
+	width: 30px;
+	height: 30px;
+	font-size:25px ;
+	line-height: 30px;
+	text-align: center;
+	color: #48D4CB;
+}
+.title{
+  font-family: "微软雅黑";
+  color: #333;
+}
+.price{
+  font-family: "微软雅黑";
+	color:#FF2F2F!important;
+	font-size: 0.8rem;
+}     
+p.miaoshu{
+  font-family: "微软雅黑";
+	font-size: 0.6rem;
+  color: #666;
+}
+div.title_con{
+	height: .8rem;
+    text-align: center;
+    margin-bottom: .6rem;
+}
+.title_con .title{
+	font-size: .8rem;
+    display: inline-block;
+    line-height: .8rem;
+    background-color: #F8F8F8;
+    z-index: 2;
+    position: relative;
+    padding: 0 1.25rem;
+    vertical-align: top;
+    color: #969696;
+}
+.title_con .line{
+    line-height: 0;
+    border-bottom: 1px solid #ccc;
+    position: absolute;
+    top: 1rem;
+    left: 5%;
+    width: 90%;
+    z-index: 1;
+}
+
+
+/*用户登录注册*/
+/*login.html*/
+.biaodan{
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+.biaodan label{
+  font-family: "微软雅黑";
+	margin: 10px;
+}
+/*模态框动画*/
+.slide-in-right {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+.slide-in-right.ng-enter, .slide-in-right > .ng-enter {
+  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+}      
+.slide-in-right.ng-enter-active, .slide-in-right > .ng-enter-active {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.slide-in-right.ng-leave, .slide-in-right > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+}
+
+/*shopcar*/
+.shopCarRen{
+  width: 30px;
+  height: 30px;
+  font-size:20px ;
+  line-height: 30px;
+}
+.shopCarIcon{
+  font-size:20px ;
+}
+.shopCarIcon,.shopCardes{
+  font-family: "微软雅黑";
+  line-height: 60px;
+  color:#666;
+}
+.shopCarLogin{
+  font-family: "微软雅黑";
+  line-height: 16px;
+  min-height: 16px;
+}
+.shopCarIcon2,.shopCardes2{
+  line-height: 25px;
+  color:#666;
+}
+.shopCarFuxuan .list{
+  margin-top: 40px;
+}
+.item-checkbox .checkbox{
+  left: -6px;
+}
+.shopCarInput{
+  width: 40px;
+}
+.jiesuan{
+
+}
+.jiesuan .list label{
+  border: none;
+  margin: 10px;
+  margin-top: 6px;
+  padding-left: 50px
+}
+.shopcarHeji{
+  font-size: 18px;
+  line-height: 44px;
+}
+
+/*articleTabs*/
+.articleTabsYx{
+  width: 44px;
+  display: inline-block;
+  margin:0;
+  height:44px;
+  text-align: center;
+  color: #5D5F6A;
+}
+.articleTabsYx i{
+  font-size: 20px;
+}
+
+/*article*/
+.articletitle a{
+  line-height: 44px!important;
+  padding: 0;
+  font-size: 14px!important;
+}
+.articletitle span{
+  line-height: 44px;
+  color:#666;
+}
+.articlefirst h3{
+  margin: 10px 0;
+  font-size: 18px;
+}
+.articlefirst p{
+  margin: 10px 0;
+
+}
+.articlefirstprice{
+  color:#FF463C!important;
+  font-size: 1.2rem!important;
+  font-weight: 700;
+}
+
+
+/*reset*/
+.resetfrom label{
+  margin: 10px!important;
+}
+.resetfrom input{
+  height: 28px!important;
+}
+.resetfrom .radio-content{
+  height: 35px;
+  line-height: 35px;
+}
+.resetfrom .radio-content .item-content,.resetfrom .radio-content .radio-icon{
+  padding:0 20px;
+} 
+.resetfrom .text-success{
+  color: #3C763D;
+  margin-top: 10px;
+}
+.resetfrom .text-danger{
+  color: #A94442;
+  margin-top: 10px;
+}
+
+span.num{
+  color:blue;
+}
+span.addtime{
+  color:black;
+}
+
+
+

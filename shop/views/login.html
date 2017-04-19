@@ -1,0 +1,49 @@
+<div class="modal stable-bg " >
+	<ion-header-bar class="stable-bg">
+		<button class="button" ui-sref="home">
+			<i class="icon ion-arrow-left-c"></i>
+		</button>
+		<h1 class="title">账 户 登 录</h1>
+	</ion-header-bar>
+ 
+	 
+	<ion-content padding='true'>
+		<!-- 表单验证 -->
+		<form class="resetfrom" name="myForm" ng-submit='submitData()'>
+		<div class="list list-wrap padding-horizontal biaodan  " style="margin-bottom:20px">
+			<div class="row clearpadding list list-inset card stable-bg">
+				<label class="item item-input col-60 light-bg" style="border:1px solid #ddd;">
+					<input type="text" placeholder="请输入用户名" class="form-control" 
+	                   ng-model="userdata.name" 
+	                   name="nameEle"
+	                   autocomplete="off"
+	                   ng-pattern="/^\w{4,12}$/"
+	                   ng-required="true">
+				</label>
+				<label>
+					<p ng-if="myForm.nameEle.$touched && myForm.nameEle.$invalid" class="text-danger">用户名错误</p>
+					<p ng-if="myForm.nameEle.$touched && myForm.nameEle.$valid" class="text-success">用户名可用</p>
+				</label>
+			</div>
+	
+
+			<div class="row clearpadding list list-inset card  stable-bg" style="margin-bottom:20px">
+				<label class="item item-input col-60 light-bg" style="border:1px solid #ddd; ">
+					<input type="password" class="form-control" ng-model="userdata.pwd" name="pwdEle" id="pwdInput" autocomplete="off"  ng-required='true' placeholder="请输入密码"
+					ng-minlength='6' ng-maxlength='18'>
+				</label>
+				<label>	
+					<p class="text-success" ng-if="myForm.pwdEle.$touched && myForm.pwdEle.$valid">密码有效</p>
+					<p class="text-danger" ng-if="myForm.pwdEle.$touched &&( myForm.pwdEle.$error.minlength || myForm.pwdEle.$error.maxlength )">密码错误</p>
+				</label>
+			</div>	
+			</div>
+			<div class="row row-wrap biaodan" style="margin-top:20px">
+				<button class="button button-positive button-full" ng-disabled="myForm.$invalid" style="font-family:微软雅黑;font-size:15px;">登 录</button>
+				<div class=" col col-25" style="margin-top:5px;color:#387EF5;font-family:微软雅黑;font-size:15px;margin-left:10px;" ui-sref="reset" ng-click='modal.hide()'>注 册</div>
+				<div class=" col col-33 col-offset-33" style="margin-top:5px;margin-left:100px;color:#387EF5;font-family:微软雅黑;font-size:15px;">忘记密码</div>
+			</div>
+		
+		</form>	
+	</ion-content>
+</div>

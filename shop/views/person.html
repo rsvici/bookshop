@@ -1,0 +1,79 @@
+<ion-header-bar  class="item-input-inset stable-bg">			
+	<i class="icon ion-chevron-left placeholder-icon shopCarRen" ng-click=gotoHome()></i>
+	<h3 class="title">个人中心</h3>
+
+</ion-header-bar>
+<!-- 内容	 -->
+<ion-content  overflow-scroll="false" has-bouncing='true'  class="stable-bg has-header" scroll="true">
+	<!-- 没有登录时 -->
+	<div ng-if="getShopCarShow(1)">
+		<div class="row padding light-bg">
+			<div class="col-10"><i class="icon ion-android-cart shopCarIcon"></i></div>
+			<div class="col-66 shopCardes" style="font-family:微软雅黑">登录后可同步电脑与手机购物车</div>
+			<div class="col padding-top">
+				<button class="button button-assertive  button-block button-small shopCarLogin" ui-sref='login' style="font-family:微软雅黑">登 录</button>
+			</div>
+		</div>	
+
+		<div class="list padding" >
+			<div class="title_con">
+				<span class="title">猜你喜欢</span>
+				<div class="line"></div>
+			</div>
+			<ion-item class="row padding-horizontal row-wrap clearborder stable-bg">
+				<ion-list class="col col-50" ng-repeat="book in bookList">
+					<div ng-click="articleId(book.id)">
+						<ion-item class="item-image padding-top" style="border:none">
+							<img ng-src="/Admin/{{book.images[0].image_name}}" width="100%">
+						</ion-item>
+						<ion-item style="border:none;padding-bottom:0">
+							<h3 class="title">{{book.title}}</h3>
+							<p class="miaoshu">{{book.author}}</p>
+							<p class="price">{{book.price | currency:'&yen;'}}</p>
+						</ion-item>
+					</div>
+				</ion-list>
+			</ion-item>
+		</div>
+	</div>
+	<div ng-if="getShopCarShow(2)">
+		<div class="list clearpadding">
+		
+        <a class="item item-avatar item-icon-right item-button-right" ng-click="goDetails()">
+            <img ng-src="images/tx.jpg" >
+            <h2><span>{{yonghuming}}</span></h2>
+            <button class="button button-stable button-small" ng-click="zhuxiaologin()" >注销</button>
+        </a> 
+        <ion-item class="item-divider item-gap">
+        </ion-item>
+        <button class="button button-block button-light" style="margin:1px;margin-top:10px;font-family:微软雅黑" ng-click="showOrder()">
+        	我的订单
+        </button>
+        <button class="button button-block button-light" style="margin:1px;margin-top:10px;font-family:微软雅黑" ng-click="showContent()">
+        	我的评论
+        </button>
+        <button class="button button-block button-light" style="margin:1px;margin-top:10px;font-family:微软雅黑" ng-click="editPassword()">
+        	修改密码
+        </button>
+         <button class="button button-block button-light" style="margin:1px;margin-top:10px;margin-bottom:10px;;font-family:微软雅黑">
+        	我的收藏
+        </button>
+        <ion-item style="font-family:微软雅黑">
+            当前版本
+            <span class="item-note">1.0.0</span>
+            <!--<span class="item-note" ng-bind="appVersion"></span>-->
+        </ion-item>
+        <ion-item style="font-family:微软雅黑">
+            联系作者
+            <span class="item-note" style="font-family:微软雅黑">微信订阅号：vici</span>
+        </ion-item>
+       
+       
+  
+		</div>
+	
+
+		
+	</div>
+
+</ion-content>

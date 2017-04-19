@@ -1,0 +1,42 @@
+
+<ion-header-bar class=" stable-bg" style="border:none">
+	<i class="icon ion-chevron-left placeholder-icon shopCarRen" onclick="javascript:window.history.back(-1);"></i>
+	<h3 class="title">商品列表</h3>
+</ion-header-bar>
+
+
+<ion-content class='search  content stable-bg'>
+<!--下拉刷新-->
+	<ion-refresher pulling-text="刷新..." refreshing-text="" on-refresh="refreshData()">
+	</ion-refresher>
+
+	<div class="item-input-inset clearpadding">
+		<label class="item-input-wrapper padding-left" style="margin-left:10px">
+				<i class="icon ion-ios-search placeholder-icon"></i>
+				<input type="search" placeholder="搜索..." ng-model="newSearchName" >
+		</label>  
+		<button class="button  button-clear button-stable login" menu-toggle="right" style="font-size:14px;color:#7C7C7C;" ng-click="getListSearch(newSearchName)">搜索</button>
+	</div>
+	<div class="list" style="margin:0" ng-if="showlist">
+		<div class="button-bar">
+			<button class='button button-clear button-dark' ng-click='sortBy(1)'>综合排序</button>
+			<button class='button button-clear button-dark' ng-click='sortBy(2)'>价格 <i ng-class='{"ion-arrow-down-b":reverse,"ion-arrow-up-b":!reverse}' ng-show="tab === 2" ></i>
+			</button>
+			<button class='button button-clear button-dark' ng-click="sortBy(3)">筛选</button>
+		</div>
+	</div>
+	<div class="list clearpadding" ng-if="showlist">
+		<a class="item item-thumbnail-left"  ng-repeat='book in bookList | orderBy : proFn : reverse'>
+			<img ng-src="/Admin/{{book.images[0].image_name}}" >
+      		<h3>{{book.title}}</h3>
+			<p class="miaoshu">{{book.author}}</p>
+			<p class="price" style="color:#FF463C;">{{book.price | currency:'&yen;'}}</p>
+			<button class="button button-calm button-small" ng-click=articleId(book.id)>直接购买</button>
+		</a>	
+	</div>
+
+	<!--上拉加载-->
+		<!-- <ion-infinite-scroll immediate-check='false' ng-if='index' distance='1%' on-infinite="loadMore()">
+		</ion-infinite-scroll> -->
+</ion-content>
+
